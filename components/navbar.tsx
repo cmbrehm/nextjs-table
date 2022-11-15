@@ -1,12 +1,15 @@
 import { useMemo } from 'react'
-import Head from 'next/head'
-import Image from 'next/image'
+import { Tab } from '@headlessui/react'
 import Table from './table'
-import styles from '../styles/Home.module.css'
-import Navbar from '../components/navbar';
 
-export default function Home() {
-  const columns = useMemo(() => [
+export default function Navbar() {
+  const tabs = [
+    "Single",
+    "Multiple",
+    "File Upload"
+    ]
+    
+      const columns = useMemo(() => [
     {
       Header: "Submitted By",
       accessor: 'submitted-by',
@@ -46,23 +49,20 @@ export default function Home() {
       }
  
     ], [])
+
+
   return (
-    <div className="flex flex-col h-screen justify-between w-screen">
-      <header>
-        <Navbar/>
-      </header>
-        <footer className={styles.footer}>
-          <a
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Powered by{' '}
-            <span className={styles.logo}>
-              <Image src="/vercel.svg" alt="Vercel Logo" width={72} height={16} />
-            </span>
-          </a>
-        </footer>
-    </div>
+    <Tab.Group>
+      <Tab.List className="bg-blue-500">
+          {tabs.map(t=>(
+            <Tab className="px-20 ui-selected:uppercase ui-selected:underline">{t}</Tab>
+          ))}
+      </Tab.List>
+      <Tab.Panels>
+        <Tab.Panel className="py-15 m-10"><Table columns={columns} data={data}/></Tab.Panel>
+        <Tab.Panel>Content 2</Tab.Panel>
+        <Tab.Panel>Content 3</Tab.Panel>
+      </Tab.Panels>
+    </Tab.Group>
   )
 }
