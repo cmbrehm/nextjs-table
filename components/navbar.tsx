@@ -1,6 +1,7 @@
 import { useMemo } from 'react'
 import { Tab } from '@headlessui/react'
 import Table from './table'
+import Form from './form'
 
 export default function Navbar() {
   const tabs = [
@@ -53,12 +54,13 @@ export default function Navbar() {
 
   return (
     <Tab.Group>
-      <Tab.List className="bg-blue-500">
+      <Tab.List className="bg-blue-500 w-screen">
           {tabs.map(t=>(
             <Tab className="px-20 ui-selected:uppercase ui-selected:underline">{t}</Tab>
           ))}
       </Tab.List>
       <Tab.Panels>
+        <Tab.Panel><Form /></Tab.Panel>
         <Tab.Panel className="py-15 m-10"><Table columns={columns} data={data}/></Tab.Panel>
         <Tab.Panel>Content 2</Tab.Panel>
         <Tab.Panel>Content 3</Tab.Panel>

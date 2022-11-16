@@ -48,9 +48,12 @@ export default function Home() {
     ], [])
   return (
     <div className="flex flex-col h-screen justify-between w-screen">
-      <header>
-        <Navbar/>
-      </header>
+      <div className={styles.title}>
+        <h1>THE APP</h1>
+      </div>
+      <div className={styles.main}>
+        <Navbar />
+      </div>
         <footer className={styles.footer}>
           <a
             href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
